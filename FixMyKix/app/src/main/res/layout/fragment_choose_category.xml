@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_color"
+        android:padding="@dimen/activity_horizontal_padding">
+
+        <ImageView
+            android:id="@+id/iv_back_about_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_backspace" />
+
+        <TextView
+            style="@style/TextStyleHeadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/categories" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_heading_delivery_options"
+        style="@style/TextStyleHeadingBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:gravity="center"
+        android:text="@string/choosecategory" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal" />
+
+    <View
+        android:id="@+id/viewtop"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:background="@color/colorPrimary" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_sub_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal" />
+
+
+    <TextView
+        android:id="@+id/tv_next"
+        style="@style/TextStyleBlueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:gravity="center"
+        android:layout_marginEnd="5dp"
+        android:text="@string/next"
+        android:textAllCaps="true"
+        android:textSize="14sp" />
+
+
+</LinearLayout>

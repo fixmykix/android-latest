@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_add_street"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/border_grey"
+        android:gravity="top"
+        android:hint="Street"
+        android:padding="@dimen/padding_small" />
+
+    <EditText
+        android:id="@+id/et_add_city"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/border_grey"
+        android:gravity="top"
+        android:hint="City"
+        android:padding="@dimen/padding_small" />
+
+    <EditText
+        android:id="@+id/et_add_state"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/border_grey"
+        android:gravity="top"
+        android:hint="State"
+        android:padding="@dimen/padding_small" />
+
+    <EditText
+        android:id="@+id/et_postalcode"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/border_grey"
+        android:gravity="top"
+        android:hint="Postal code"
+        android:padding="@dimen/padding_small" />
+
+    <TextView
+        android:id="@+id/tv_save"
+        style="@style/TextStyleBlueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:gravity="center"
+        android:text="SAVE"
+        android:textAllCaps="true"
+        android:textSize="14sp" />
+</LinearLayout>

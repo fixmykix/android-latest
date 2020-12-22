@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:background="@drawable/border_grey"
+    android:orientation="horizontal"
+    android:padding="@dimen/activity_horizontal_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_item_artist_request_heading_name"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SENDER'S NAME"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/tv_item_artist_request_heading_amount"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="AMOUNT"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_item_artist_request_name"
+                style="@style/TextStyleContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_item_artist_request_heading_name"
+                android:layout_weight="1"
+                android:text="Test user" />
+
+            <TextView
+                android:id="@+id/tv_item_artist_request_amount"
+                style="@style/TextStyleContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="400" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_item_artist_request_heading_services"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SERVICES"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/tv_item_artist_request_heading_date"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_item_artist_request_services"
+                style="@style/TextStyleContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Polishing, Stiching" />
+
+            <TextView
+                android:id="@+id/tv_item_artist_request_date"
+                style="@style/TextStyleContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="12-Aug-2020" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_item_artist_request_status"
+            style="@style/TextStyleHeadingTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_small"
+            android:text="Accept"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_container_request_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_item_artist_request_accept"
+                style="@style/TextStylePurple"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_normal"
+                android:layout_weight="1"
+                android:background="@drawable/bg_boutton_green_rounded"
+                android:gravity="center"
+                android:padding="@dimen/padding_small"
+                android:text="Accept"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/tv_item_artist_request_decline"
+                style="@style/TextStylePurple"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_boutton_red_rounded"
+                android:gravity="center"
+                android:padding="@dimen/padding_small"
+                android:text="Decline"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_item_artist_service_request_click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_keyboard_arrow_right"
+        android:tint="@color/colorPrimary" />
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_small"
+    android:background="@drawable/border_grey"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_small">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fixing_shoes" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_user_order_heading"
+            style="@style/TextStyleHeadingBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plishing, Stiching" />
+
+        <TextView
+            android:id="@+id/tv_user_order_date"
+            style="@style/TextStyleContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_artist_request_heading_name"
+            android:text="Order date : 25;Aug-2020" />
+
+        <TextView
+            android:id="@+id/tv_user_order_amount"
+            style="@style/TextStyleHeadingBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount : 5$" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/grey_color" />
+
+        <TextView
+            android:id="@+id/tv_user_order_status"
+            style="@style/TextStyleHeadingBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="Pending"
+            android:textAllCaps="true"
+            android:textColor="#FF000B" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_user_order_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_delete" />
+</LinearLayout>

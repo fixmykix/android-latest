@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/jordan_white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/transparent_black"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/iv_back_login"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_heading_login"
+            style="@style/TextStyleHeadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_large"
+            android:gravity="center"
+            android:text="@string/signin_to_your_account" />
+
+        <EditText
+            android:id="@+id/input_text_login_email"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_heading_login"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/input_text_login_password"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_text_login_email"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/tv_login_done"
+            style="@style/TextStyleBlueButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_text_login_password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:text="@string/sign_in"
+            android:textAllCaps="true" />
+
+        <TextView
+            android:id="@+id/tv_login_forget_passoword"
+            style="@style/TextStylePurple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_login_done"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:gravity="end"
+            android:padding="16dp"
+            android:text="@string/forgootten_password" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyleLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:text="@string/not_a_member_yet" />
+
+            <TextView
+                android:id="@+id/tv_login_create_new_account"
+                style="@style/TextStyleHeadingWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="@string/register_now"
+                android:textAllCaps="true" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

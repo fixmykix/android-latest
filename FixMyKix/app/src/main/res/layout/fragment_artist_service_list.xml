@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_horizontal_padding">
+
+            <TextView
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_weight="1"
+                android:text="My Services" />
+
+            <TextView
+                android:id="@+id/tv_add_service"
+                style="@style/TextStyleHeadingWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_boutton_theme"
+                android:paddingLeft="@dimen/padding_small"
+                android:paddingTop="@dimen/padding_mini"
+                android:paddingRight="@dimen/padding_small"
+                android:paddingBottom="@dimen/padding_mini"
+                android:text="Add Services +" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_services"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

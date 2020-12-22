@@ -1,0 +1,89 @@
+<resources>
+    <string name="app_name">FixMyKix</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string name="intro_text_1">Welcome to FIXMYKIX</string>
+    <string name="intro_text_2">FIXMYKIX is an online mobile marketplace for shoe restoration and shoe art, In a world stunned by fast fashion its time to start interacting with alternatives to throwing shoes in our landfills.</string>
+    <string name="intro_text_3">We can do DEEP CLEANING SERVICES, BASIC/SPOT CLEANING SERVICES, DE-OXIDATION(UN-YELLOWING) SERVICES, REGLUE SERVICES, REPAINT SERVICE, SHOE ART SERVICE.</string>
+
+    <!--Signin-->
+    <string name="signin_to_your_account">Sign into your\nFixMyKix account</string>
+    <string name="forgootten_password">Forgotten your password?</string>
+    <string name="not_a_member_yet">Not a member yet? Sign up today</string>
+    <string name="register_now">Register now</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+
+    <!--Forget password-->
+    <string name="forget_password">Forget Password?</string>
+    <string name="send">Send</string>
+
+    <!--    Signup-->
+    <string name="register_fixmykix">Register your\nFixMyKix details</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last name</string>
+    <string name="mobile_number">Mobile number</string>
+    <string name="sneakerhead">Customer</string>
+    <string name="shoe_artist">Shoe Artist</string>
+    <string name="confirm_password">Confirm your password</string>
+    <string name="gender">Gender</string>
+    <string name="register">Register</string>
+    <string name="dob">Date Of Birth</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="already_member">Already a member?</string>
+    <string name="enter_otp">Enter OTp</string>
+    <string name="done">Done</string>
+    <string name="resend_otp">Resend OTp</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_first_name">Enter first name</string>
+    <string name="enter_last_name">Enter last name</string>
+    <string name="enter_password">Enter password</string>
+
+    <string name="take_photo">Take photo</string>
+    <string name="choose_from_library">Choose from library</string>
+    <string name="add_image">Add Image</string>
+    <string name="restoration">Restoration</string>
+    <string name="custom">Custom</string>
+    <string name="highlighted_services">Highlighted services</string>
+    <string name="deliveryoptions">Delivery Options</string>
+    <string name="buynow">Buy Now</string>
+    <string name="checkout">Check Out</string>
+    <string name="paynow">Pay Now</string>
+    <string name="orders">Orders:</string>
+    <string name="orders_heading">Thanks for order\n Steps to ship</string>
+    <string name="orderstatus">Order Status</string>
+    <string name="choosecategory">Choose Category</string>
+    <string name="categories">Categories</string>
+    <string name="next">Next</string>
+    <string name="subcategories">Sub Categories</string>
+    <string name="ask_something_here">Type here</string>
+    <string name="apply">Apply</string>
+    <string name="add_address">Select Address</string>
+    <string name="chat">Chat</string>
+    <string name="proceed">Proceed</string>
+    <string name="addtocart">Add to Cart</string>
+    <string name="gotocart">GO TO CART</string>
+    <string name="cartitems">Cart Items</string>
+    <string-array name="order_instructions">
+        <item>1.Print ticket from email\n</item>
+        <item>2.Package Item\n</item>
+        <item>3.Attach Label\n</item>
+        <item>4.Drop Package at Ups\n</item>
+        <item>5.Provide FMKW Tracking</item>
+    </string-array>
+
+</resources>

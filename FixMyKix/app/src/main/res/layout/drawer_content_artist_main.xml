@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/artist_drawer_header"
+        layout="@layout/nav_header_main" />
+
+    <TextView
+        android:id="@+id/artist_drawer_my_request"
+        style="@style/TextStyleContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artist_drawer_header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_normal_x"
+        android:padding="@dimen/padding_small_plus"
+        android:text="Request" />
+
+    <TextView
+        android:id="@+id/artist_drawer_artist_profile"
+        style="@style/TextStyleContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artist_drawer_my_request"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_small"
+        android:padding="@dimen/padding_small_plus"
+        android:text="Profile" />
+
+    <TextView
+        android:id="@+id/artist_drawer_about_us"
+        style="@style/TextStyleContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artist_drawer_artist_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_small"
+        android:padding="@dimen/padding_small_plus"
+        android:text="About us" />
+
+    <TextView
+        android:id="@+id/artist_drawer_contact_us"
+        style="@style/TextStyleContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artist_drawer_about_us"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_small"
+        android:padding="@dimen/padding_small_plus"
+        android:text="Contact us" />
+
+    <TextView
+        android:id="@+id/artist_logout"
+        style="@style/TextStyleHeadingTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_normal_x"
+        android:padding="@dimen/padding_small"
+        android:text="Logout"
+        android:textAllCaps="true" />
+</RelativeLayout>

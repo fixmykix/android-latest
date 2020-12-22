@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_color"
+        android:padding="@dimen/activity_horizontal_padding">
+
+        <ImageView
+            android:id="@+id/iv_back_about_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_backspace" />
+
+        <TextView
+            style="@style/TextStyleHeadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/cartitems" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/orderid"
+        style="@style/TextStyleHeadingBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal" />
+
+    <TextView
+        android:id="@+id/orderupsstatus"
+        style="@style/TextStyleHeadingBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal" />
+
+    <TextView
+        android:id="@+id/tv_artist_service_artist_done"
+        style="@style/TextStyleHeadingWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="@dimen/padding_small"
+        android:text="@string/proceed"
+        android:textAllCaps="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_cart_added_services"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_artist_service_artist_done"
+        android:layout_below="@id/orderid"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal" />
+
+</RelativeLayout>

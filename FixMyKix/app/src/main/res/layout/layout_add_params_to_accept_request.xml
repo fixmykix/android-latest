@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_request_detail_header_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_color"
+        android:padding="@dimen/activity_horizontal_padding">
+
+        <ImageView
+            android:id="@+id/iv_back_add_param_to_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_backspace" />
+
+        <TextView
+            style="@style/TextStyleHeadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Add Details" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_request_detail_header_container"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            style="@style/TextStyleHeadingTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal_x"
+            android:maxLength="10"
+            android:text="Price" />
+
+        <EditText
+            android:id="@+id/et_request_price"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:hint="Enter Price for the requested service/services"
+            android:inputType="numberDecimal"
+            android:padding="@dimen/padding_small" />
+
+        <TextView
+            style="@style/TextStyleHeadingTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal_x"
+            android:text="Turn Around Time" />
+
+        <EditText
+            android:id="@+id/et_request_tat"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:hint="Enter time to complete the services"
+            android:padding="@dimen/padding_small" />
+
+        <TextView
+            style="@style/TextStyleHeadingTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal_x"
+            android:text="Description" />
+
+        <EditText
+            android:id="@+id/et_request_desc"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:hint="Enter description"
+            android:padding="@dimen/padding_small" />
+
+        <TextView
+            android:id="@+id/tv_accept_request_done"
+            style="@style/TextStyleBlueButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="Accept Request" />
+    </LinearLayout>
+</RelativeLayout>

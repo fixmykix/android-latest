@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <TextView
+        android:id="@+id/item_pager_splash_heading"
+        style="@style/TextStyleHeadingTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="FIXMYKIX"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/iv_item_pager_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/item_pager_splash_heading"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img5" />
+
+    <TextView
+        android:id="@+id/tv_item_pager_splash_desc"
+        style="@style/TextStyleHeadingTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/margin_normal_x"
+        android:layout_marginRight="@dimen/margin_normal_x"
+        android:layout_marginBottom="@dimen/margin_second_normal"
+        android:gravity="center"
+        android:textColor="@android:color/holo_red_light" />
+
+</RelativeLayout>
+

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_color"
+        android:padding="@dimen/activity_horizontal_padding">
+
+        <ImageView
+            android:id="@+id/iv_back_service_request_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_backspace" />
+
+        <TextView
+            style="@style/TextStyleHeadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="BOOK SERVICES" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_padding">
+
+            <TextView
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SERVICES" />
+
+            <TextView
+                android:id="@+id/txtServices"
+                style="@style/TextStyleContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="" />
+
+            <TextView
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="PRICE" />
+
+            <TextView
+                android:id="@+id/txtprice"
+                style="@style/TextStyleContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="" />
+
+            <TextView
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Description(Optional)" />
+
+            <EditText
+                android:id="@+id/et_service_request_desc"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_gravity="start|top"
+                android:background="@drawable/border_grey"
+                android:hint="Enter Description"
+                android:padding="12dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_add_images_request_service"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:src="@drawable/ic_attach_file_black_24dp" />
+                <TextView
+                    style="@style/TextStyleHeadingBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="Add Image" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_service_request_images"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_service_request_done"
+                style="@style/TextStyleBlueButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="BOOK ORDER"
+                android:textAllCaps="true" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

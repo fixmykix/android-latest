@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_container_artist"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_small"
+    android:elevation="1dp"
+    app:cardCornerRadius="@dimen/radius_small">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_grey"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_small">
+
+        <CheckBox
+            android:id="@+id/checkservice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:buttonTint="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_service" />
+
+        <LinearLayout
+            android:id="@+id/linearmiddle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small_plus"
+            android:layout_toStartOf="@id/checkservice"
+            android:layout_toEndOf="@id/imgProduct"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_item_artist_artist_desc"
+                style="@style/TextStyleSecondarySmallInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Artist name" />
+
+            <TextView
+                android:id="@+id/tv_item_order_id"
+                style="@style/TextStyleSecondarySmallInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="13/7 new south valves, Toranto, Brick" />
+
+            <TextView
+                android:id="@+id/tv_item_order_quantity"
+                style="@style/TextStyleSecondarySmallInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="13/7 new south valves, Toranto, Brick" />
+
+            <TextView
+                android:id="@+id/tv_item_artist_cost"
+                style="@style/TextStyleSecondarySmallInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:text="-" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

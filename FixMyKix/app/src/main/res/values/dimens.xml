@@ -1,0 +1,48 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!--Default padding-->
+    <dimen name="activity_horizontal_padding">16dp</dimen>
+    <dimen name="activity_vertical_padding">16dp</dimen>
+
+    <!--Margins-->
+    <dimen name="margin_mini">6dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_small_x">12dp</dimen>
+    <dimen name="margin_small_plus">10dp</dimen>
+    <dimen name="margin_second_small">14dp</dimen>
+    <dimen name="margin_normal">20dp</dimen>
+    <dimen name="margin_normal_x">24dp</dimen>
+    <dimen name="margin_second_normal">33dp</dimen>
+    <dimen name="margin_large">41dp</dimen>
+    <dimen name="margin_second_large">44dp</dimen>
+    <dimen name="margin_extra_mini">2dp</dimen>
+    <dimen name="margin_extra_large">52dp</dimen>
+    <dimen name="margin_second_normal_x">28dp</dimen>
+    <dimen name="margin_extra_large_x">64dp</dimen>
+    <dimen name="margin_second_extra_large">70dp</dimen>
+    <dimen name="margin_second_extra_large_x">100dp</dimen>
+    <dimen name="margin_large_data_confirmation">80dp</dimen>
+
+    <!--Padding-->
+    <dimen name="padding_mini">4dp</dimen>
+    <dimen name="padding_mini_x">6dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_second_small">12dp</dimen>
+    <dimen name="padding_small_x">14dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_normal_x">20dp</dimen>
+    <dimen name="padding_second_normal">24dp</dimen>
+    <dimen name="padding_small_first">9dp</dimen>
+    <dimen name="padding_small_plus">10dp</dimen>
+
+    <dimen name="elevation_small">6dp</dimen>
+    <dimen name="radius_small">6dp</dimen>
+
+    <dimen name="dimen_edit_text_verification_code">40dp</dimen>
+</resources>

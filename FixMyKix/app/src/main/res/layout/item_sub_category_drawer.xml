@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tv_item_sub_category"
+        style="@style/TextStyleSecondarySmallInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingStart="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:paddingTop="@dimen/padding_mini_x"
+        android:paddingEnd="@dimen/padding_mini_x"
+        android:paddingBottom="@dimen/padding_mini_x"
+        android:text="Sub category" />
+
+    <CheckBox
+        android:id="@+id/checkbox_service_of_drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/colorPrimary" />
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <RelativeLayout
+        android:id="@+id/item_line"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="2dp">
+
+        <!-- the semi transparent circle on the line -->
+        <View
+            android:id="@+id/viewicon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@drawable/circle"
+            android:visibility="visible" />
+
+        <View
+            android:id="@+id/verticalLine"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/viewicon"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="2dp"
+            android:background="@android:color/black" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/orderstatus"
+        style="@style/TextStyleContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingStart="@dimen/margin_normal"
+        android:paddingEnd="@dimen/margin_normal"
+        android:paddingBottom="@dimen/margin_normal"
+        android:text="@string/orders" />
+
+
+    <!-- the blue line -->
+
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+    <TextView
+        style="@style/TextStyleSecondarySmallInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_text_signup_email"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="Place your order and wait for artist response." />
+
+    <TextView
+        style="@style/TextStyleSecondarySmallInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_text_signup_email"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="We will notify you" />
+
+
+    <ImageView
+        android:id="@+id/iv_back_my_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_small"
+        android:src="@drawable/placeorder" />
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_heading_delivery_options"
+        style="@style/TextStyleHeadingBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:gravity="center"
+        android:text="@string/checkout" />
+
+    <TableLayout
+        android:id="@+id/tablelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:shrinkColumns="*"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_below="@id/tv_heading_delivery_options"
+        android:stretchColumns="*">
+
+        <TableRow>
+            <TextView
+                style="@style/TextStyleContent"
+                android:layout_gravity="start"
+                android:padding="10dp"
+                android:text="Restoration" />
+
+            <TextView
+                style="@style/TextStyleContent"
+                android:padding="10dip"
+                android:text="$100" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/TextStyleContent"
+                android:layout_gravity="start"
+                android:padding="10dp"
+                android:text="Shipping" />
+
+            <TextView
+                style="@style/TextStyleContent"
+                android:padding="10dip"
+                android:text="$30" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/TextStyleContent"
+                android:layout_gravity="start"
+                android:padding="10dp"
+                android:text="Fmx Fee" />
+
+            <TextView
+                style="@style/TextStyleContent"
+                android:padding="10dip"
+                android:text="$10" />
+
+        </TableRow>
+    </TableLayout>
+    <TextView
+        android:id="@+id/tv_custom"
+        style="@style/TextStyleBlueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tablelayout"
+        android:text="@string/paynow"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_centerInParent="true"
+        android:paddingStart="@dimen/margin_normal"
+        android:paddingEnd="@dimen/margin_normal"
+        android:textAllCaps="true"
+        android:textSize="14sp" />
+</RelativeLayout>

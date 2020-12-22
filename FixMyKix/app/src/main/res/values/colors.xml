@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FCB300</color>
+    <color name="colorPrimaryDark">#FCB300</color>
+    <color name="colorAccent">#D81B60</color>
+    
+    <color name="textFieldBolder">#D5D9E5</color>
+    <color name="dark_grey">#6C7180</color>
+    <color name="sign_up_button">#484848</color>
+    <color name="grey_color">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="green">@android:color/holo_green_dark</color>
+    <color name="red">@android:color/holo_red_dark</color>
+</resources>

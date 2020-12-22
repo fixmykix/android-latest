@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/iv_service_artist_service_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_artist_service_artist_name"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon_service" />
+
+    <RelativeLayout
+        android:id="@+id/rl_container_header_service_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_color"
+        android:padding="@dimen/activity_horizontal_padding">
+
+        <ImageView
+            android:id="@+id/iv_back_artist_service_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_backspace" />
+
+        <TextView
+            style="@style/TextStyleHeadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/app_name" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_artist_service_artist_name"
+        style="@style/TextStyleContentLightSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_container_header_service_detail"
+        android:layout_margin="@dimen/margin_small_plus"
+        android:text="Artist name" />
+
+    <TextView
+        android:id="@+id/tv_artist_service_desc"
+        style="@style/TextStyleSecondarySmallInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_service_artist_service_detail"
+        android:layout_margin="@dimen/margin_small_plus"
+        android:text="An publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content." />
+
+    <TextView
+        android:id="@+id/tv_artist_service_artist_address"
+        style="@style/TextStyleContentLightSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_artist_service_desc"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/margin_small_plus"
+        android:text="13/7 new south valves, Toranto, Brick" />
+
+    <TextView
+        android:id="@+id/tv_artist_service_artist_head_service"
+        style="@style/TextStyleContentLightSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_artist_service_artist_address"
+        android:layout_margin="@dimen/margin_small_plus"
+        android:background="#f3f2f7"
+        android:padding="@dimen/padding_small"
+        android:text="Services"
+        android:textAllCaps="true" />
+
+    <TextView
+        android:id="@+id/tv_artist_service_artist_done"
+        style="@style/TextStyleHeadingWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="@dimen/padding_small"
+        android:text="@string/addtocart"
+        android:textAllCaps="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_artist_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_artist_service_artist_head_service" />
+</RelativeLayout>

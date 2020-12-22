@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_artist_home">
+
+    <fragment
+        android:id="@+id/nav_artist_home"
+        android:name="com.app.fixmykix.ui.home.ArtistServiceListFragment"
+        android:label="FixMyKix"
+        tools:layout="@layout/fragment_artist_service_list" />
+
+    <fragment
+        android:id="@+id/nav_artist_request"
+        android:name="com.app.fixmykix.ui.home.ActivityArtistRequestList"
+        android:label="Service Request"
+        tools:layout="@layout/fragment_artist_request_list" />
+
+    <fragment
+        android:id="@+id/nav_artist_profile"
+        android:name="com.app.fixmykix.ui.home.ActivityArtistRequestList"
+        android:label="Service Request"
+        tools:layout="@layout/fragment_artist_request_list" />
+</navigation>

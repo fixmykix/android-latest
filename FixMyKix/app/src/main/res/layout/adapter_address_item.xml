@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgdelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:src="@drawable/ic_baseline_delete_24" />
+
+    <ImageView
+        android:id="@+id/imgedit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_toStartOf="@id/imgdelete"
+        android:src="@drawable/ic_baseline_edit_24" />
+
+    <TextView
+        android:id="@+id/tvcity"
+        style="@style/TextStyleHeadingBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvstreet"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tvstate"
+        style="@style/TextStyleHeadingBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvcity"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tvpostalcode"
+        style="@style/TextStyleHeadingBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvstate"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tvstreet"
+        style="@style/TextStyleHeadingBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:text="Street" />
+
+
+</RelativeLayout>

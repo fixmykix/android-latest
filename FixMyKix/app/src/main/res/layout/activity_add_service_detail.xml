@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_container_header_add_service_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_color"
+        android:padding="@dimen/activity_horizontal_padding">
+
+        <ImageView
+            android:id="@+id/iv_back_add_service_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_backspace" />
+
+        <TextView
+            style="@style/TextStyleHeadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Add service details" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_add_service_done"
+        android:layout_below="@id/rl_container_header_add_service_detail">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_add_service_detail_heading_select_category"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Select Category"
+                android:textAllCaps="true" />
+
+            <LinearLayout
+                android:id="@+id/ll_container_spinner_select_cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_add_service_detail_heading_select_category"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_normal"
+                android:background="@drawable/border_grey"
+                android:padding="@dimen/padding_small">
+
+                <Spinner
+                    android:id="@+id/spinner_select_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_add_service_detail_heading_select_service"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_container_spinner_select_cat"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Select service"
+                android:textAllCaps="true" />
+
+            <LinearLayout
+                android:id="@+id/ll_container_spinner_select_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_add_service_detail_heading_select_service"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_normal"
+                android:background="@drawable/border_grey"
+                android:padding="@dimen/padding_small">
+
+                <Spinner
+                    android:id="@+id/spinner_select_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_add_service_detail_heading_desc"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_container_spinner_select_service"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Description"
+                android:textAllCaps="true" />
+
+            <EditText
+                android:id="@+id/et_add_service_detail_desc"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@id/tv_add_service_detail_heading_desc"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:background="@drawable/border_grey"
+                android:gravity="top"
+                android:hint="Enter description"
+                android:padding="@dimen/padding_small" />
+
+            <TextView
+                android:id="@+id/tv_add_service_detail_heading_image"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_add_service_detail_desc"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Proof of Work (Upload images)"
+                android:textAllCaps="true" />
+
+            <ImageView
+                android:id="@+id/iv_add_service_proof_of_work"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/tv_add_service_detail_heading_image"
+                android:layout_marginTop="@dimen/margin_small"
+                android:src="@drawable/ic_attach_file_black_24dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_container_et_heading_add_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_add_service_proof_of_work"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/activity_horizontal_padding"
+                android:paddingRight="@dimen/activity_horizontal_padding">
+
+                <TextView
+                    android:id="@+id/tv_item_artist_request_heading_name"
+                    style="@style/TextStyleHeadingBlack"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Price"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tv_item_artist_request_heading_amount"
+                    style="@style/TextStyleHeadingBlack"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Days required"
+                    android:textAllCaps="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_container_et_add_service_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_container_et_heading_add_service"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/activity_vertical_padding"
+                android:paddingRight="@dimen/activity_horizontal_padding">
+
+                <EditText
+                    android:id="@+id/et_add_service_price"
+                    style="@style/EditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_normal"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_grey"
+                    android:hint="...$"
+                    android:inputType="numberDecimal"
+                    android:padding="@dimen/padding_small"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/et_add_service_days"
+                    style="@style/EditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_grey"
+                    android:hint="Choose days"
+                    android:inputType="number"
+                    android:padding="@dimen/padding_small"
+                    android:textAllCaps="true" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_add_service_done"
+        style="@style/TextStyleHeadingWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="@dimen/padding_small"
+        android:text="Add service"
+        android:textAllCaps="true" />
+</RelativeLayout>
