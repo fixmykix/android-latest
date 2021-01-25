@@ -243,36 +243,6 @@ public class ActivityArtistDetail extends Activity {
         }
     }
 
-
-    private void convertBitmapToFile(Bitmap bitmap) {
-        File documentImageFile = new File(getCacheDir(), "temp".concat(String.valueOf(System.currentTimeMillis())));
-        try {
-            documentImageFile.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-        byte[] bitmapData = bos.toByteArray();
-
-        //write the bytes in file
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(documentImageFile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            fos.write(bitmapData);
-            fos.flush();
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//        fileProfile = documentImageFile;
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

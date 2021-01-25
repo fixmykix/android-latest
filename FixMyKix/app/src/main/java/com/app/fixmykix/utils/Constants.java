@@ -46,7 +46,7 @@ public interface Constants {
     //Bundle keys
     String SERVICE_DATA = "service_data";
 
-    String[] DRAWER_ITEM_TEXT = {"Home", "My Request", "About us", "Contact us", "Service Categories"};
+    String[] DRAWER_ITEM_TEXT = {"Home", "My Request", "About us", "Contact us"};
 
     String SERVICE_CANCELLED = "cancelled";
     String SERVICE_REJECTED = "rejected";

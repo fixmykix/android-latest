@@ -5,34 +5,52 @@
     android:orientation="vertical">
 
 
-
-
-    <TextView
-        style="@style/TextStyleSecondarySmallInformation"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/input_text_signup_email"
+        android:background="@color/grey_color"
+        android:padding="@dimen/activity_horizontal_padding">
+        <ImageView
+            android:id="@+id/iv_back_about_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_backspace" />
+
+        <TextView
+            style="@style/TextStyleHeadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/request_order"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        style="@style/TextStyleHeadingBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="Place your order and wait for artist response." />
-
-    <TextView
-        style="@style/TextStyleSecondarySmallInformation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/input_text_signup_email"
-        android:layout_gravity="center"
-
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="We will notify you" />
+        android:layout_margin="@dimen/margin_small"
+        android:text="@string/order_request" />
 
 
     <ImageView
         android:id="@+id/iv_back_my_order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="400dp"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_small"
         android:src="@drawable/placeorder" />
+
+    <Button
+        android:id="@+id/payButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Pay" />
 </LinearLayout>

@@ -3,7 +3,6 @@ package com.app.fixmykix.activities;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,7 +13,6 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,21 +23,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.app.fixmykix.MainActivityArtist;
 import com.app.fixmykix.R;
 import com.app.fixmykix.api_manager.ApiClient;
 import com.app.fixmykix.api_manager.ApiInterface;
-import com.app.fixmykix.model.Service;
-import com.app.fixmykix.model.ShopingCategory;
+import com.app.fixmykix.model.ServiceResponse;
+import com.app.fixmykix.model.ServicesItem;
 import com.app.fixmykix.storage_manager.LocalStorage;
 import com.app.fixmykix.utils.CommonUtils;
 import com.app.fixmykix.utils.Constants;
 import com.app.fixmykix.utils.GlideUtils;
-import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -49,6 +47,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -79,7 +78,10 @@ public class ActivityAddService extends Activity {
 
     String imageBase64;
 
-    Service service = null;
+    ServicesItem service = null;
+
+    List<ServiceResponse> serviceResponseArrayList = new ArrayList<>();
+    ArrayList<String> serviceSelection = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,10 +93,23 @@ public class ActivityAddService extends Activity {
 
     private void getData() {
         Bundle extras = getIntent().getExtras();
+        if (serviceResponseArrayList != null && serviceResponseArrayList.size() > 0)
+            serviceResponseArrayList.clear();
+        if (serviceSelection != null && serviceSelection.size() > 0)
+            serviceSelection.clear();
         if (extras != null && extras.containsKey(Constants.KEY_SERVICE)) {
             service = extras.getParcelable(Constants.KEY_SERVICE);
+            serviceSelection.add(service.getName());
         }
-        getDrawerCategoryData();
+        if (extras != null && extras.containsKey(Constants.KEY_SERVICE_IDS)) {
+            serviceResponseArrayList = extras.getParcelableArrayList(Constants.KEY_SERVICE_IDS);
+        }
+
+        for (int i = 0; i < serviceResponseArrayList.size(); i++) {
+            serviceSelection.add(serviceResponseArrayList.get(i).getName());
+        }
+        setServiceAdapter(serviceSelection);
+        //getDrawerCategoryData();
     }
 
     @OnClick(R.id.iv_back_add_service_detail)
@@ -102,143 +117,9 @@ public class ActivityAddService extends Activity {
         onBackPressed();
     }
 
-    void getDrawerCategoryData() {
 
-        ProgressDialog progressDialog = CommonUtils.getProgressBar(ActivityAddService.this);
-        progressDialog.show();
-
-        ApiClient.getClient().create(ApiInterface.class).
-                getServiceWithCategory(LocalStorage.getString(ActivityAddService.this, LocalStorage.X_USER_TOKEN, "")).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
-                progressDialog.dismiss();
-                switch (response.code()) {
-                    case Constants.SUCCESS_CODE:
-                    case Constants.SUCCESS_CODE_SECOND:
-                        try {
-                            JSONObject jsonObject = new JSONObject(response.body().string());
-                            if (jsonObject.getBoolean("status")) {
-                                JSONObject jsonObjectMain = jsonObject.getJSONObject("data");
-                                JSONArray jsonArrayCategory = jsonObjectMain.getJSONArray("categories");
-                                ArrayList<ShopingCategory> shopingCategories = new ArrayList<>();
-                                if (jsonArrayCategory != null && jsonArrayCategory.length() > 0) {
-                                    for (int index = 0; index < jsonArrayCategory.length(); index++) {
-                                        shopingCategories.add(new Gson().fromJson(jsonArrayCategory.get(index).toString(), ShopingCategory.class));
-                                    }
-                                    setView(shopingCategories);
-                                }
-                            }
-                        } catch (JSONException | IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        break;
-                    case Constants.ERROR_CODE_INVALID:
-                        finishAffinity();
-                        startActivity(new Intent(ActivityAddService.this, LoginActivity.class));
-                        break;
-                    default:
-                        try {
-                            Toast.makeText(ActivityAddService.this, new JSONObject(response.errorBody().string()).getString("message"), Toast.LENGTH_SHORT).show();
-                        } catch (JSONException | IOException e) {
-                            e.printStackTrace();
-                        }
-                }
-
-                try {
-                    /*JSONObject jsonObject = JsonUtil.mainjson(response);
-                    if (jsonObject.getInt(JsonUtil.STATUS) == 1) {
-                        String jsonStringMainCategoryList = jsonObject.getString("data");
-
-                        Gson gson = new Gson();
-                        Type type = new TypeToken<ArrayList<SubCategoriesModel>>() {
-                        }.getType();
-                        ArrayList<SubCategoriesModel> list = gson.fromJson(jsonStringMainCategoryList, type);
-                        setDrawerCatListAdapter(list);
-                    } else if (jsonObject.getInt(JsonUtil.STATUS) == 0) {
-                        Toast.makeText(NewMainActivity.this, jsonObject.getString(JsonUtil.MESSAGE), Toast.LENGTH_SHORT).show();
-                    }*/
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-            }
-        });
-    }
-
-    private void setView(ArrayList<ShopingCategory> shopingCategories) {
-
-        if (shopingCategories != null) {
-            ArrayAdapter<ShopingCategory> aa = new ArrayAdapter<ShopingCategory>(ActivityAddService.this, R.layout.screen_width_spinner_selected_item, shopingCategories) {
-                @Override
-                public boolean isEnabled(int position) {
-                    /*if (position == 0) {
-                        // Disable the first item from Spinner
-                        // First item will be use for hint
-                        return false;
-                    } else {
-                        return true;
-                    }*/
-                    return true;
-                }
-
-                @Override
-                public View getDropDownView(int position, View convertView,
-                                            ViewGroup parent) {
-                    View view = super.getDropDownView(position, convertView, parent);
-                    TextView tv = (TextView) view;
-                    /*if (position == 0) {
-                        // Set the hint text color gray
-                        tv.setTextColor(Color.GRAY);
-                    } else {
-                        tv.setTextColor(Color.BLACK);
-                    }*/
-                    return view;
-                }
-            };
-            aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerCategory.setAdapter(aa);
-
-            spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                    setServiceAdapter(shopingCategories.get(position).getServices());
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-            if (service == null) {
-                spinnerCategory.setSelection(0);
-            } else {
-                ShopingCategory categoryOfService = null;
-                for (int index = 0; index < shopingCategories.size(); index++) {
-                    if (shopingCategories.get(index).getId().equals(service.getCategoryId())) {
-                        categoryOfService = shopingCategories.get(index);
-                        spinnerCategory.setSelection(index);
-                    }
-                }
-
-                if (categoryOfService != null && categoryOfService.getServices() != null) {
-                    setServiceAdapter(categoryOfService.getServices());
-                    for (int index = 0; index < categoryOfService.getServices().size(); index++) {
-                        if (service.getId() == categoryOfService.getServices().get(index).getId())
-                            spinneService.setSelection(index);
-                    }
-                }
-            }
-        }
-    }
-
-    private void setServiceAdapter(ArrayList<Service> services) {
-        ArrayAdapter<Service> adapterService = new ArrayAdapter<Service>(ActivityAddService.this, R.layout.screen_width_spinner_selected_item, services) {
+    private void setServiceAdapter(ArrayList<String> services) {
+        ArrayAdapter<String> adapterService = new ArrayAdapter<String>(ActivityAddService.this, R.layout.screen_width_spinner_selected_item, services) {
             @Override
             public boolean isEnabled(int position) {
                     /*if (position == 0) {
@@ -285,23 +166,35 @@ public class ActivityAddService extends Activity {
             etDays.setError("Enter time required");
             return;
         }
-        if (TextUtils.isEmpty(imageBase64)) {
+       /* if (TextUtils.isEmpty(imageBase64)) {
             Toast.makeText(this, "Select image", Toast.LENGTH_SHORT).show();
             return;
+        }*/
+        int serviceId = 0;
+        String text = spinneService.getSelectedItem().toString();
+        if (serviceResponseArrayList != null && !serviceResponseArrayList.isEmpty()) {
+            for (int i = 0; i < serviceResponseArrayList.size(); i++) {
+                if (serviceResponseArrayList.get(i).getName().equalsIgnoreCase(text)) {
+                    serviceId = serviceResponseArrayList.get(i).getId();
+                }
+            }
+        } else {
+            serviceId = service.getId();
         }
+
         KProgressHUD kProgressHUD = CommonUtils.showProgressWithText(ActivityAddService.this);
         kProgressHUD.show();
 
         Call<ResponseBody> call = ApiClient.getClient().create(ApiInterface.class).
                 addService(LocalStorage.getString(ActivityAddService.this, LocalStorage.X_USER_TOKEN, ""),
-                        String.valueOf(((Service) spinneService.getSelectedItem()).getId()),
+                        serviceId,
                         etDesc.getText().toString(),
                         String.valueOf(CommonUtils.getUserData(ActivityAddService.this).getId()),
                         etPrice.getText().toString(),
                         etDays.getText().toString(),
                         imageBase64);
 
-        if (service != null) {
+       /* if (service != null) {
             call = ApiClient.getClient().create(ApiInterface.class).
                     updateService(LocalStorage.getString(ActivityAddService.this, LocalStorage.X_USER_TOKEN, ""),
                             "v1/artist_services/" + String.valueOf(((Service) spinneService.getSelectedItem()).getId()),
@@ -311,7 +204,7 @@ public class ActivityAddService extends Activity {
                             etPrice.getText().toString(),
                             etDays.getText().toString(),
                             imageBase64);
-        }
+        }*/
         call.enqueue(new Callback<ResponseBody>() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
@@ -324,8 +217,8 @@ public class ActivityAddService extends Activity {
                             JSONObject jsonObject = new JSONObject(response.body().string());
                             if (jsonObject.getBoolean("status")) {
                                 Toast.makeText(ActivityAddService.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                                setResult(RESULT_OK);
-                                finish();
+                                finishAffinity();
+                                startActivity(new Intent(ActivityAddService.this, MainActivityArtist.class));
                             }
                         } catch (JSONException | IOException e) {
                             e.printStackTrace();
@@ -338,7 +231,7 @@ public class ActivityAddService extends Activity {
                         break;
                     default:
                         try {
-                            Toast.makeText(ActivityAddService.this, new JSONObject(response.errorBody().string()).getString("error"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivityAddService.this, new JSONObject(response.errorBody().string()).getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException | IOException e) {
                             e.printStackTrace();
                         }

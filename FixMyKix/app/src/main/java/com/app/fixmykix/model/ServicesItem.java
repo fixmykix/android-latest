@@ -1,8 +1,11 @@
 package com.app.fixmykix.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class ServicesItem{
+public class ServicesItem implements Parcelable {
 
 	@SerializedName("image")
 	private Image image;
@@ -24,6 +27,27 @@ public class ServicesItem{
 
 	@SerializedName("type")
 	private String type;
+
+	protected ServicesItem(Parcel in) {
+		updatedAt = in.readString();
+		isPopular = in.readByte() != 0;
+		name = in.readString();
+		createdAt = in.readString();
+		id = in.readInt();
+		type = in.readString();
+	}
+
+	public static final Creator<ServicesItem> CREATOR = new Creator<ServicesItem>() {
+		@Override
+		public ServicesItem createFromParcel(Parcel in) {
+			return new ServicesItem(in);
+		}
+
+		@Override
+		public ServicesItem[] newArray(int size) {
+			return new ServicesItem[size];
+		}
+	};
 
 	public Image getImage(){
 		return image;
@@ -51,5 +75,20 @@ public class ServicesItem{
 
 	public String getType(){
 		return type;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
+		parcel.writeString(updatedAt);
+		parcel.writeByte((byte) (isPopular ? 1 : 0));
+		parcel.writeString(name);
+		parcel.writeString(createdAt);
+		parcel.writeInt(id);
+		parcel.writeString(type);
 	}
 }

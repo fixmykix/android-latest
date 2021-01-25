@@ -12,12 +12,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.fixmykix.R;
 import com.app.fixmykix.activities.LoginActivity;
+import com.app.fixmykix.adapters.AdapterServiceHome;
 import com.app.fixmykix.api_manager.ApiClient;
 import com.app.fixmykix.api_manager.ApiInterface;
+import com.app.fixmykix.model.ArtistServicesModelResponse;
 import com.app.fixmykix.model.CategoriesItem;
 import com.app.fixmykix.model.CategoriesResponse;
 import com.app.fixmykix.model.ChildrenItem;
@@ -52,6 +57,9 @@ public class ServiceListFragment extends Fragment {
 
     public static final String ORIENTATION = "orientation";
 
+    @BindView(R.id.rv_services)
+    RecyclerView rvServices;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +68,12 @@ public class ServiceListFragment extends Fragment {
         ButterKnife.bind(this, root);
         getServices();
         return root;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getHighLightedServices();
     }
 
     @OnClick(R.id.tv_restoration)
@@ -130,6 +144,55 @@ public class ServiceListFragment extends Fragment {
             }
         });
 
+    }
+
+    private void getHighLightedServices() {
+        ProgressDialog progressDialog = CommonUtils.getProgressBar(getActivity());
+        progressDialog.show();
+        ApiClient.getClient().create(ApiInterface.class).
+                getServices().
+                enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        progressDialog.dismiss();
+                        switch (response.code()) {
+                            case Constants.SUCCESS_CODE:
+                            case Constants.SUCCESS_CODE_SECOND:
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response.body().string());
+                                    Log.d("JsonObject Response", jsonObject.toString());
+                                    Gson gson = new Gson();
+                                    ArtistServicesModelResponse artistServicesModelResponse =
+                                            gson.fromJson(jsonObject.toString(), ArtistServicesModelResponse.class);
+                                    if (artistServicesModelResponse.isStatus()) {
+                                        rvServices.setAdapter(new
+                                                AdapterServiceHome(requireActivity(),
+                                                artistServicesModelResponse.getArtistServiceData().getServices(), false));
+                                        rvServices.setLayoutManager(new GridLayoutManager(getActivity(), 3, RecyclerView.VERTICAL, false));
+                                    }
+                                } catch (JSONException | IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                                break;
+                            case Constants.ERROR_CODE_INVALID:
+                                getActivity().finishAffinity();
+                                startActivity(new Intent(getActivity(), LoginActivity.class));
+                                break;
+                            default:
+                                try {
+                                    Toast.makeText(getActivity(), new JSONObject(response.errorBody().string()).getString("message"), Toast.LENGTH_SHORT).show();
+                                } catch (JSONException | IOException e) {
+                                    e.printStackTrace();
+                                }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        progressDialog.dismiss();
+                    }
+                });
     }
 
     /*@OnClick(R.id.tv_logout)

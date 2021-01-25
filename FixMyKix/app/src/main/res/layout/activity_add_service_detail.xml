@@ -34,15 +34,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_add_service_detail_heading_select_category"
-                style="@style/TextStyleHeadingBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="Select Category"
-                android:textAllCaps="true" />
+            <EditText
+                android:id="@+id/et_add_service_detail_desc"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@id/tv_add_service_detail_heading_desc"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:background="@drawable/border_grey"
+                android:gravity="top"
+                android:hint="Enter description"
+                android:padding="@dimen/padding_small" />
+
+            <ImageView
+                android:id="@+id/iv_add_service_proof_of_work"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/tv_add_service_detail_heading_image"
+                android:layout_marginTop="@dimen/margin_small"
+                android:src="@drawable/ic_attach_file_black_24dp" />
 
             <LinearLayout
                 android:id="@+id/ll_container_spinner_select_cat"
@@ -53,7 +63,8 @@
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginRight="@dimen/margin_normal"
                 android:background="@drawable/border_grey"
-                android:padding="@dimen/padding_small">
+                android:padding="@dimen/padding_small"
+                android:visibility="gone">
 
                 <Spinner
                     android:id="@+id/spinner_select_category"
@@ -61,17 +72,6 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_add_service_detail_heading_select_service"
-                style="@style/TextStyleHeadingBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ll_container_spinner_select_cat"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="Select service"
-                android:textAllCaps="true" />
 
             <LinearLayout
                 android:id="@+id/ll_container_spinner_select_service"
@@ -90,48 +90,6 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_add_service_detail_heading_desc"
-                style="@style/TextStyleHeadingBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ll_container_spinner_select_service"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="Description"
-                android:textAllCaps="true" />
-
-            <EditText
-                android:id="@+id/et_add_service_detail_desc"
-                style="@style/EditTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_below="@id/tv_add_service_detail_heading_desc"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:background="@drawable/border_grey"
-                android:gravity="top"
-                android:hint="Enter description"
-                android:padding="@dimen/padding_small" />
-
-            <TextView
-                android:id="@+id/tv_add_service_detail_heading_image"
-                style="@style/TextStyleHeadingBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/et_add_service_detail_desc"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="Proof of Work (Upload images)"
-                android:textAllCaps="true" />
-
-            <ImageView
-                android:id="@+id/iv_add_service_proof_of_work"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_below="@id/tv_add_service_detail_heading_image"
-                android:layout_marginTop="@dimen/margin_small"
-                android:src="@drawable/ic_attach_file_black_24dp" />
 
             <LinearLayout
                 android:id="@+id/ll_container_et_heading_add_service"
@@ -197,6 +155,50 @@
                     android:padding="@dimen/padding_small"
                     android:textAllCaps="true" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_add_service_detail_heading_select_category"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Select Category"
+                android:textAllCaps="true"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_add_service_detail_heading_select_service"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_container_spinner_select_cat"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Select service"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/tv_add_service_detail_heading_desc"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_container_spinner_select_service"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Description"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/tv_add_service_detail_heading_image"
+                style="@style/TextStyleHeadingBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_add_service_detail_desc"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Proof of Work (Upload images)"
+                android:textAllCaps="true" />
 
         </RelativeLayout>
     </ScrollView>

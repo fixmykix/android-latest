@@ -10,25 +10,25 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@drawable/jordan_blue" />
+            android:layout_centerInParent="true"
+            android:src="@drawable/jordan_blue" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/transparent_black"
-        android:padding="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/transparent_black"
+            android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/iv_back_forget_password"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
-            android:tint="@color/colorPrimary" />
+            <ImageView
+                android:id="@+id/iv_back_forget_password"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
+                android:tint="@color/colorPrimary" />
 
-        <TextView
-            android:id="@+id/tv_heading_forget_password"
-            style="@style/TextStyleHeadingWhite"
+            <TextView
+                android:id="@+id/tv_heading_forget_password"
+                style="@style/TextStyleHeadingWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

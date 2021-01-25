@@ -63,11 +63,29 @@ public interface ApiInterface {
     @Headers({"Accept: application/json"})
     @GET("v1/messages")
     Call<ResponseBody> getChatMessages(@Header(Constants.KEY_X_USER_TOKEN) String token,
-                                       @Field("receiver_id") String recieverid);
+                                       @Query("receiver_id") String recieverid);
+
+    @Headers({"Accept: application/json"})
+    @FormUrlEncoded
+    @POST("v1/messages")
+    Call<ResponseBody> sendChatMessages(@Header(Constants.KEY_X_USER_TOKEN) String token,
+                                        @Field("receiver_id") String recieverid,
+                                        @Field("text") String messageTxt);
 
     @Headers({"Accept: application/json"})
     @GET("v1/addresses")
     Call<ResponseBody> getAddresses(@Header(Constants.KEY_X_USER_TOKEN) String token);
+
+    @Headers({"Accept: application/json"})
+    @GET
+    Call<ResponseBody> addAddressInorder(@Header(Constants.KEY_X_USER_TOKEN) String token,
+                                         @Url String url,
+                                         @Query("address_id") String addressId);
+
+    @Headers({"Accept: application/json"})
+    @POST
+    Call<ResponseBody> addOrderDemand(@Header(Constants.KEY_X_USER_TOKEN) String token,
+                                      @Url String url);
 
     @Headers({"Accept: application/json"})
     @GET("v1/cart_items/add_to_cart")
@@ -96,11 +114,19 @@ public interface ApiInterface {
 
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
-    @POST("services/parcel/api/v1/united_parcel_services/validate")
+    @POST("v1/united_parcel_services/validate")
     Call<ResponseBody> validateAddress(@Header(Constants.KEY_X_USER_TOKEN) String token,
                                        @Field("city") String city,
                                        @Field("postal_code") String postalcode,
                                        @Field("state_province_code") String provincecode);
+
+    @Headers({"Accept: application/json"})
+    @FormUrlEncoded
+    @POST("v1/payments")
+    Call<ResponseBody> validatePayment(@Header(Constants.KEY_X_USER_TOKEN) String token,
+                                       @Field("service_request_id") String requestid,
+                                       @Field("card_token") String cardtoken,
+                                       @Field("save_card") boolean savecard);
 
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
@@ -133,7 +159,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("v1/artist_services")
     Call<ResponseBody> addService(@Header(Constants.KEY_X_USER_TOKEN) String token,
-                                  @Field("artist_service[service_id]") String serviceId,
+                                  @Field("artist_service[service_id]") int serviceId,
                                   @Field("artist_service[description]") String description,
                                   @Field("artist_service[artist_id]") String artistId,
                                   @Field("artist_service[price]") String price,
@@ -166,11 +192,11 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("v1/service_requests")
     Call<ResponseBody> bookService(@Header(Constants.KEY_X_USER_TOKEN) String token,
-                                   @Field("service_request[description]") String desc,
-                                   @Field("service_request[price]") String price,
                                    @Field("service_request[artist_id]") String artistId,
-                                   @Field("service_request[artist_service_ids]") ArrayList<String> serviceIds,
-                                   @Field("service_request[image]") String image);
+                                   @Field("service_request[description]") String desc,
+                                   @Field("service_request[image]") String image,
+                                   @Field("service_request[order_id]") String orderId
+    );
 
     @Headers({"Accept: application/json"})
     @GET("v1/service_requests")

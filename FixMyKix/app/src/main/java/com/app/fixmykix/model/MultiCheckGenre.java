@@ -1,5 +1,7 @@
 package com.app.fixmykix.model;
 
+import android.os.Parcelable;
+
 import com.thoughtbot.expandablecheckrecyclerview.models.MultiCheckExpandableGroup;
 
 import java.util.List;

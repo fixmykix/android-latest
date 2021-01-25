@@ -54,6 +54,10 @@
         <activity android:name=".activities.ActivityDeliveryInstructions" />
         <activity android:name=".activities.ActivityDeliveryOptions" />
         <activity android:name=".activities.ActivityCart" />
+        <activity android:name=".activities.ChatActivity" />
+        <activity android:name=".activities.ActivityRequestOrder" />
+        <activity android:name=".activities.ActivityPaymentSuccess" />
+        <activity android:name=".activities.ActivityCheckOut" />
 
     </application>
 

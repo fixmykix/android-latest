@@ -41,6 +41,6 @@ public class ActivityConfirmOrder extends Activity {
 
     @OnClick(R.id.tv_order_confirm_done)
     void onClickDone() {
-        startActivity(new Intent(this, ActivityPayment.class));
+      //  startActivity(new Intent(this, ActivityPayment.class));
     }
 }

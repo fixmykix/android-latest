@@ -13,6 +13,7 @@ public class LocalStorage {
     public static final String USER_DETAIL = "user_detail";
     public static final String APP_VISITED_ONCE = "app_visited_once";
     public static final String X_USER_TOKEN = "x_user_token";
+    public static final String ORDER_ID = "order_id";
 
     public static SharedPreferences getPrefs(Context context) {
         return context.getSharedPreferences(PREF_NAME, context.MODE_PRIVATE);

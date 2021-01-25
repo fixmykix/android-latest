@@ -7,6 +7,19 @@
     android:orientation="horizontal"
     android:padding="@dimen/padding_small">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:padding="3dp"
+            android:src="@drawable/ic_baseline_chat_24" />
+
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -14,6 +27,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/fixing_shoes" />
 
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,7 +56,7 @@
             style="@style/TextStyleHeadingBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amount : 5$" />
+            android:text="Amount :" />
 
         <View
             android:layout_width="match_parent"

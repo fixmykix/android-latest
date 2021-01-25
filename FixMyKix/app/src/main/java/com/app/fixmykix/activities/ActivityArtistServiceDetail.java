@@ -19,8 +19,10 @@ import com.app.fixmykix.adapters.AdapterArtist;
 import com.app.fixmykix.adapters.AdapterSelectServiceOfArtist;
 import com.app.fixmykix.api_manager.ApiClient;
 import com.app.fixmykix.api_manager.ApiInterface;
+import com.app.fixmykix.model.AddToCartResponse;
 import com.app.fixmykix.model.Artist;
 import com.app.fixmykix.model.ArtistService;
+import com.app.fixmykix.model.CategoriesResponse;
 import com.app.fixmykix.storage_manager.LocalStorage;
 import com.app.fixmykix.utils.CommonUtils;
 import com.app.fixmykix.utils.Constants;
@@ -116,10 +118,16 @@ public class ActivityArtistServiceDetail extends Activity {
                                 try {
                                     JSONObject jsonObject = new JSONObject(response.body().string());
                                     Log.e("AddToCartResponse", jsonObject.toString());
-                                    if (jsonObject.optBoolean("status")) {
+                                    Gson gson = new Gson();
+                                    AddToCartResponse addToCartResponse =
+                                            gson.fromJson(jsonObject.toString(), AddToCartResponse.class);
+
+                                    if (addToCartResponse.isStatus()) {
                                         Toast.makeText(ActivityArtistServiceDetail.this,
                                                 jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
-                                        tvAddToCart.setText(getString(R.string.gotocart));
+                                        LocalStorage.setString(ActivityArtistServiceDetail.this,
+                                                LocalStorage.ORDER_ID, String.valueOf(addToCartResponse.getAddToCartDataItem().getId()));
+                                        navigateToNextScreen();
                                     }
                                 } catch (JSONException | IOException e) {
                                     e.printStackTrace();
@@ -145,6 +153,16 @@ public class ActivityArtistServiceDetail extends Activity {
                 });
     }
 
+    private void navigateToNextScreen() {
+        Intent intent = new Intent(ActivityArtistServiceDetail.this, ActivityServiceRequestForm.class);
+        intent.putExtra(Constants.KEY_SERVICE_IDS, selectedServiceIds);
+        intent.putExtra(Constants.KEY_ARTIST_ID, artistId);
+        intent.putExtra("Total", total);
+        Log.e("Total", "Total" + total);
+        intent.putExtra("SelectedServices", selectedServices);
+        startActivityForResult(intent, Constants.REQUEST_CODE_BOOK_SERVICE);
+    }
+
     @OnClick(R.id.iv_back_artist_service_detail)
     void onclickBack() {
         onBackPressed();
@@ -152,23 +170,12 @@ public class ActivityArtistServiceDetail extends Activity {
 
     @OnClick(R.id.tv_artist_service_artist_done)
     void onProceedForBookRequest() {
-       /* if (tvAddToCart.getText().toString().equalsIgnoreCase(getString(R.string.gotocart))) {
-            startActivity(new Intent(ActivityArtistServiceDetail.this, ActivityCart.class));
-            return;
-        }
         if (selectedServices.isEmpty()) {
             Toast.makeText(this, "Please select atleast one service", Toast.LENGTH_SHORT).show();
             return;
         }
-        addToCart(selectedServiceIds);*/
+        addToCart(selectedServiceIds);
 
-        Intent intent = new Intent(this, ActivityServiceRequestForm.class);
-        intent.putExtra(Constants.KEY_SERVICE_IDS, selectedServiceIds);
-        intent.putExtra(Constants.KEY_ARTIST_ID, artistId);
-        intent.putExtra("Total", total);
-        Log.e("Total", "Total" + total);
-        intent.putExtra("SelectedServices", selectedServices);
-        startActivityForResult(intent, Constants.REQUEST_CODE_BOOK_SERVICE);
     }
 
     public void selectService(ArtistService artistService) {

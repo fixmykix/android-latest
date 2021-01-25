@@ -12,27 +12,27 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.fixmykix.R;
 import com.app.fixmykix.activities.ActivityAddService;
 import com.app.fixmykix.activities.ActivityArtistList;
-import com.app.fixmykix.model.Service;
+import com.app.fixmykix.model.ServicesItem;
 import com.app.fixmykix.utils.Constants;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AdapterServiceHome extends RecyclerView.Adapter<AdapterServiceHome.ViewHolder> {
 
-    Fragment context;
-    private ArrayList<Service> list;
+    Context context;
+    private List<ServicesItem> list;
     private boolean isArtist;
 
-    public AdapterServiceHome(Fragment context, ArrayList<Service> list, boolean isArtist) {
+    public AdapterServiceHome(Context context, List<ServicesItem> list, boolean isArtist) {
         this.context = context;
         this.list = list;
         this.isArtist = isArtist;
@@ -41,7 +41,7 @@ public class AdapterServiceHome extends RecyclerView.Adapter<AdapterServiceHome.
     @NonNull
     @Override
     public AdapterServiceHome.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View rootView = LayoutInflater.from(context.getActivity()).inflate(R.layout.item_service, parent, false);
+        View rootView = LayoutInflater.from(context).inflate(R.layout.item_service, parent, false);
         return new ViewHolder(rootView);
     }
 
@@ -54,11 +54,11 @@ public class AdapterServiceHome extends RecyclerView.Adapter<AdapterServiceHome.
             @Override
             public void onClick(View v) {
                 if (isArtist) {
-                    Intent intent = new Intent(context.getActivity(), ActivityAddService.class);
+                    Intent intent = new Intent(context, ActivityAddService.class);
                     intent.putExtra(Constants.KEY_SERVICE, list.get(position));
-                    context.startActivityForResult(intent, Constants.REQUEST_CODE_ADD_SERVICE);
+                    context.startActivity(intent);
                 } else {
-                    Intent intent = new Intent(context.getActivity(), ActivityArtistList.class);
+                    Intent intent = new Intent(context, ActivityArtistList.class);
                     ArrayList<String> ids = new ArrayList<>();
                     ids.add(String.valueOf(list.get(position).getId()));
                     intent.putExtra(Constants.KEY_SERVICE_IDS, ids);
@@ -89,7 +89,7 @@ public class AdapterServiceHome extends RecyclerView.Adapter<AdapterServiceHome.
         }
     }
 
-    public void filterList(ArrayList<Service> filteredList) {
+    public void filterList(ArrayList<ServicesItem> filteredList) {
         this.list = filteredList;
         notifyDataSetChanged();
     }

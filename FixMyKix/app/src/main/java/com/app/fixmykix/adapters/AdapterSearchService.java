@@ -54,7 +54,11 @@ public class AdapterSearchService extends RecyclerView.Adapter<AdapterSearchServ
                 intent.putExtra(Constants.SERVICE_DATA, list.get(position));
                 ((Activity) context).setResult(Constants.REQUEST_CODE_SELECT_SERVICE, intent);
                 ((Activity) context).finish();*/
-                context.startActivity(new Intent(context, ActivityArtistList.class));
+                Intent intent = new Intent(context, ActivityArtistList.class);
+                ArrayList<String> ids = new ArrayList<>();
+                ids.add(String.valueOf(list.get(position).getId()));
+                intent.putExtra(Constants.KEY_SERVICE_IDS, ids);
+                context.startActivity(intent);
 
             }
         });

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import com.app.fixmykix.adapters.CategoryAdapter;
 import com.app.fixmykix.adapters.SubCategoryAdapter;
 import com.app.fixmykix.model.ChildrenItem;
 import com.app.fixmykix.model.MultiCheckGenre;
+import com.app.fixmykix.model.SingleCheckGenre;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -34,6 +36,7 @@ public class CategoryListActivity extends Activity {
     private List<ChildrenItem> subCategoriesList = new ArrayList<>();
     private List<ChildrenItem> subCategoriesListChildern = new ArrayList<>();
     private List<MultiCheckGenre> multiCheckGenreArrayList = new ArrayList<>();
+    private List<SingleCheckGenre> singleCheckGenres = new ArrayList<>();
     @BindView(R.id.rv_categories)
     RecyclerView recyclerViewCategories;
     @BindView(R.id.rv_sub_categories)
@@ -43,14 +46,18 @@ public class CategoryListActivity extends Activity {
     private CategoryAdapter categoryAdapter;
     @BindView(R.id.tv_next)
     TextView txtNext;
+    private String fromWhichScreen;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_choose_category);
         ButterKnife.bind(this);
-        childrenItemArrayList = getIntent().getParcelableArrayListExtra("CategoryList");
-        Log.e("categoryLis", "" + childrenItemArrayList.size());
+        if (getIntent().getExtras() != null) {
+            childrenItemArrayList = getIntent().getParcelableArrayListExtra("CategoryList");
+            fromWhichScreen = getIntent().getStringExtra("FromScreen");
+            Log.e("categoryLis", "" + childrenItemArrayList.size());
+        }
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewCategories.setLayoutManager(layoutManager);
         categoryAdapter = new CategoryAdapter(this, childrenItemArrayList);
@@ -71,15 +78,29 @@ public class CategoryListActivity extends Activity {
         }
         if (!multiCheckGenreArrayList.isEmpty())
             multiCheckGenreArrayList.clear();
+        if (!singleCheckGenres.isEmpty())
+            singleCheckGenres.clear();
         for (int i = 0; i < subCategoriesListChildern.size(); i++) {
             MultiCheckGenre multiCheckGenre = new MultiCheckGenre(subCategoriesListChildern.get(i).getName(),
                     subCategoriesListChildern.get(i).getServices());
+            SingleCheckGenre singleCheckGenre = new SingleCheckGenre(subCategoriesListChildern.get(i).getName(),
+                    subCategoriesListChildern.get(i).getServices());
             multiCheckGenreArrayList.add(multiCheckGenre);
+            singleCheckGenres.add(singleCheckGenre);
+        }
+        try {
+            Intent intent = new Intent(this, SubCategoryActivity.class);
+            if (!TextUtils.isEmpty(fromWhichScreen)) {
+                intent.putParcelableArrayListExtra("SingleSubCategoryList", (ArrayList<? extends Parcelable>) singleCheckGenres);
+            } else
+                intent.putParcelableArrayListExtra("SubCategoryList", (ArrayList<? extends Parcelable>) multiCheckGenreArrayList);
+            Log.e("ListASize", "" + multiCheckGenreArrayList.size());
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(CategoryListActivity.this, "No services available", Toast.LENGTH_SHORT).show();
         }
 
-        Intent intent = new Intent(this, SubCategoryActivity.class);
-        intent.putParcelableArrayListExtra("SubCategoryList", (ArrayList<? extends Parcelable>) multiCheckGenreArrayList);
-        startActivity(intent);
     }
 
     public void onSubCategoryClicked(List<ChildrenItem> subChildrenItemList, int type) {
@@ -100,6 +121,8 @@ public class CategoryListActivity extends Activity {
         // Call another acitivty here and pass some arguments to it.
         if (!subCategoriesList.isEmpty())
             subCategoriesList.clear();
+        if (!subCategoriesListChildern.isEmpty())
+            subCategoriesListChildern.clear();
         subCategoriesList.addAll(childrenItemList);
         HashSet<ChildrenItem> hashSet = new HashSet<ChildrenItem>();
         hashSet.addAll(subCategoriesList);

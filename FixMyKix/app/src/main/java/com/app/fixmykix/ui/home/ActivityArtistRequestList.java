@@ -4,40 +4,30 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.fixmykix.R;
-import com.app.fixmykix.activities.ActivityAddService;
-import com.app.fixmykix.activities.ActivityUserOrders;
 import com.app.fixmykix.activities.LoginActivity;
 import com.app.fixmykix.adapters.AdapterArtistServiceRequest;
-import com.app.fixmykix.adapters.AdapterServiceHome;
-import com.app.fixmykix.adapters.AdapterUserOrder;
 import com.app.fixmykix.api_manager.ApiClient;
 import com.app.fixmykix.api_manager.ApiInterface;
-import com.app.fixmykix.model.Service;
-import com.app.fixmykix.model.ServiceRequest;
+import com.app.fixmykix.model.ArtistServiceRequestResponse;
+import com.app.fixmykix.model.ServiceRequestsItem;
 import com.app.fixmykix.storage_manager.LocalStorage;
 import com.app.fixmykix.utils.CommonUtils;
 import com.app.fixmykix.utils.Constants;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,17 +70,12 @@ public class ActivityArtistRequestList extends Activity {
                             case Constants.SUCCESS_CODE_SECOND:
                                 try {
                                     JSONObject jsonObject = new JSONObject(response.body().string());
-                                    if (jsonObject.getBoolean("status")) {
-                                        JSONObject jsosMain = jsonObject.getJSONObject("data");
-                                        JSONArray jsonArrayServiceRequest = jsosMain.getJSONArray("service_requests");
-                                        if (jsonArrayServiceRequest != null) {
-                                            ArrayList<ServiceRequest> serviceRequests = new ArrayList<>();
-                                            for (int index = 0; index < jsonArrayServiceRequest.length(); index++) {
-                                                serviceRequests.add(new Gson().fromJson(jsonArrayServiceRequest.getJSONObject(index).toString(), ServiceRequest.class));
-                                            }
-                                            setView(serviceRequests);
-                                        }
-                                        Toast.makeText(ActivityArtistRequestList.this, "No Artist for this service", Toast.LENGTH_SHORT).show();
+                                    Log.d("JsonObject Response", jsonObject.toString());
+                                    Gson gson = new Gson();
+                                    ArtistServiceRequestResponse artistServiceRequestResponse =
+                                            gson.fromJson(jsonObject.toString(), ArtistServiceRequestResponse.class);
+                                    if (artistServiceRequestResponse.isStatus()) {
+                                        setView(artistServiceRequestResponse.getServiceRequestsDataModel().getServiceRequests());
                                     }
                                 } catch (JSONException | IOException e) {
                                     e.printStackTrace();
@@ -117,14 +102,14 @@ public class ActivityArtistRequestList extends Activity {
                 });
     }
 
-    private void setView(ArrayList<ServiceRequest> serviceRequests) {
+    private void setView(List<ServiceRequestsItem> serviceRequests) {
         if (serviceRequests != null && serviceRequests.size() > 0) {
             recyclerView.setAdapter(new AdapterArtistServiceRequest(this, serviceRequests));
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         }
     }
 
-    public void declineRequest(String serviceRequestId) {
+    public void declineRequest(int serviceRequestId) {
         ProgressDialog progressDialog = CommonUtils.getProgressBar(ActivityArtistRequestList.this);
         progressDialog.show();
 

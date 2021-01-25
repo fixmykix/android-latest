@@ -75,12 +75,15 @@
                 android:id="@+id/et_service_request_desc"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="@dimen/margin_small"
-                android:layout_gravity="start|top"
+                android:layout_height="120dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_below="@id/tv_add_service_detail_heading_desc"
                 android:background="@drawable/border_grey"
-                android:hint="Enter Description"
-                android:padding="12dp" />
+                android:gravity="top"
+                android:hint="Enter description"
+                android:padding="@dimen/padding_small" />
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

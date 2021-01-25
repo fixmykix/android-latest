@@ -23,6 +23,8 @@ public class ExpandableMultiCheckRecyclerAdapter extends CheckableChildRecyclerV
         super(groups);
     }
 
+
+
     @Override
     public HeadingViewHolder onCreateGroupViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())

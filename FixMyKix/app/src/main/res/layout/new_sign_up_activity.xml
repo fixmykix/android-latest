@@ -17,54 +17,6 @@
         android:background="@drawable/transparent_black"
         android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/iv_back_signup"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
-            android:tint="@color/colorPrimary" />
-
-        <TextView
-            android:id="@+id/tv_heading_signup"
-            style="@style/TextStyleHeadingWhite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_large"
-            android:gravity="center"
-            android:text="@string/register_fixmykix" />
-
-        <LinearLayout
-            android:id="@+id/ll_container_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_heading_signup"
-            android:layout_marginTop="@dimen/margin_second_normal"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/input_text_signup_first_name"
-                style="@style/EditTextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/first_name"
-                android:inputType="text"
-                android:padding="12dp" />
-
-            <EditText
-                android:id="@+id/input_text_signup_last_name"
-                style="@style/EditTextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_normal"
-                android:layout_weight="1"
-                android:hint="@string/last_name"
-                android:inputType="text"
-                android:padding="12dp" />
-
-        </LinearLayout>
-
         <EditText
             android:id="@+id/input_text_signup_email"
             style="@style/EditTextStyle"
@@ -98,11 +50,60 @@
             android:inputType="textPassword"
             android:padding="12dp" />
 
+        <EditText
+            android:id="@+id/input_text_zipcode"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_text_signup_password_confirm"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:hint="@string/zipcode"
+            android:inputType="textPassword"
+            android:padding="12dp" />
+
+        <ImageView
+            android:id="@+id/iv_back_signup"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
+            android:tint="@color/colorPrimary" />
+
+        <LinearLayout
+            android:id="@+id/ll_container_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_heading_signup"
+            android:layout_marginTop="@dimen/margin_second_normal"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input_text_signup_first_name"
+                style="@style/EditTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/first_name"
+                android:inputType="text"
+                android:padding="12dp" />
+
+            <EditText
+                android:id="@+id/input_text_signup_last_name"
+                style="@style/EditTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:layout_weight="1"
+                android:hint="@string/last_name"
+                android:inputType="text"
+                android:padding="12dp" />
+
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/ll_container_role"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_text_signup_password_confirm"
+            android:layout_below="@id/input_text_zipcode"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_normal"
             android:orientation="horizontal">
@@ -130,17 +131,6 @@
                 android:textAllCaps="true" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_signup_done"
-            style="@style/TextStyleBlueButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ll_container_role"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:text="@string/register"
-            android:textAllCaps="true" />
-
         <LinearLayout
             android:id="@+id/ll_container_bottom_signup"
             android:layout_width="match_parent"
@@ -166,6 +156,27 @@
                 android:text="@string/sign_in"
                 android:textAllCaps="true" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_heading_signup"
+            style="@style/TextStyleHeadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_large"
+            android:gravity="center"
+            android:text="@string/register_fixmykix" />
+
+        <TextView
+            android:id="@+id/tv_signup_done"
+            style="@style/TextStyleBlueButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_container_role"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:text="@string/register"
+            android:textAllCaps="true" />
         <!-- <ScrollView
              android:id="@+id/scroll_signup"
              android:layout_width="match_parent"

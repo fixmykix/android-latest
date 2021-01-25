@@ -24,6 +24,11 @@ public class ActivityDeliveryOptions extends Activity {
         ButterKnife.bind(this);
     }
 
+    @OnClick(R.id.iv_back_about_us)
+    void onCLickBack() {
+        finish();
+    }
+
     @OnClick(R.id.tv_buynow)
     void onClickBuyNow() {
         startActivity(new Intent(this, ActivityDeliveryInstructions.class));

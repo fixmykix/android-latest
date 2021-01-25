@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -70,6 +71,7 @@ public class ActivityUserOrders extends Activity {
                             case Constants.SUCCESS_CODE_SECOND:
                                 try {
                                     JSONObject jsonObject = new JSONObject(response.body().string());
+                                    Log.d("JsonObject Response", jsonObject.toString());
                                     if (jsonObject.getBoolean("status")) {
                                         JSONObject jsosMain = jsonObject.getJSONObject("data");
                                         JSONArray jsonArrayServiceRequest = jsosMain.getJSONArray("service_requests");

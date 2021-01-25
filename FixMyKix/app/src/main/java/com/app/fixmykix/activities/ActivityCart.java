@@ -9,12 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.fixmykix.R;
-import com.app.fixmykix.adapters.AddressRecyclerAdapter;
 import com.app.fixmykix.adapters.CartItemsAdapter;
 import com.app.fixmykix.api_manager.ApiClient;
 import com.app.fixmykix.api_manager.ApiInterface;
@@ -31,6 +29,7 @@ import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,6 +58,11 @@ public class ActivityCart extends Activity {
         getCartItems();
     }
 
+    @OnClick(R.id.iv_back_about_us)
+    void onCLickBack() {
+        finish();
+    }
+
     private void getCartItems() {
         ProgressDialog progressDialog = CommonUtils.getProgressBar(ActivityCart.this);
         progressDialog.show();
@@ -77,6 +81,8 @@ public class ActivityCart extends Activity {
                                     Gson gson = new Gson();
                                     GetCartItemsResponse getCartItemsResponse =
                                             gson.fromJson(jsonObject.toString(), GetCartItemsResponse.class);
+                                    if (getCartItemsResponse.getData() == null)
+                                        return;
                                     txtOrderNo.setText("Order Number: \n \n" + getCartItemsResponse.getData().getOrderNumber());
                                     txtOrderStatus.setText("UPS Status: \n \n" + getCartItemsResponse.getData().getUpsStatus());
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityCart.this);

@@ -96,8 +96,9 @@ public class ActiviytSearchService extends Activity {
                             case Constants.SUCCESS_CODE_SECOND:
                                 try {
                                     JSONObject jsonObject = new JSONObject(response.body().string());
-                                    if (jsonObject.getInt("status") == 200) {
-                                        JSONArray jsonObjectMain = jsonObject.getJSONArray("data");
+                                    if (jsonObject.optBoolean("status")) {
+                                        JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                                        JSONArray jsonObjectMain = jsonObject1.optJSONArray("services");
                                         if (jsonObjectMain != null) {
                                             services = new ArrayList<>();
                                             for (int i = 0; i < jsonObjectMain.length(); i++) {

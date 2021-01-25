@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,16 +27,20 @@
             android:text="@string/chat" />
     </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:background="@android:color/white">
 
         <EditText
-            android:id="@+id/et_search_box"
+            android:id="@+id/et_message_box"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_toStartOf="@id/imgsend"
             android:backgroundTint="#00FFFFFF"
             android:hint="@string/ask_something_here"
             android:imeOptions="actionDone"
@@ -43,7 +48,19 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp" />
 
-    </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/imgsend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/margin_small"
+            android:src="@drawable/ic_baseline_send_24" />
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_chat"

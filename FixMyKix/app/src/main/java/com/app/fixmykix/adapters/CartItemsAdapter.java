@@ -1,6 +1,8 @@
 package com.app.fixmykix.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.fixmykix.R;
+import com.app.fixmykix.activities.ActivityServiceRequestForm;
 import com.app.fixmykix.model.OrderDetailsItem;
+import com.app.fixmykix.utils.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,6 +48,18 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.View
         holder.txtCost.setText("Price : " + orderDetailsItem.getArtistService().getPrice());
         holder.txtOrderID.setText("Order Id : " + orderDetailsItem.getOrderId());
         holder.txtOrderQuantity.setText("Quantity : " + orderDetailsItem.getQuantity());
+        holder.imgEditService.setOnClickListener(view -> {
+            ArrayList<String> selectedServices = new ArrayList<>();
+            selectedServices.add(String.valueOf(orderDetailsItem.getArtistServiceId()));
+            Intent intent = new Intent(context, ActivityServiceRequestForm.class);
+            intent.putExtra(Constants.KEY_SERVICE_IDS, selectedServices);
+            intent.putExtra("EditOrder", "EditOrder");
+            intent.putExtra("orderId", String.valueOf(orderDetailsItem.getArtistService().getServiceId()));
+            intent.putExtra(Constants.KEY_ARTIST_ID, String.valueOf(orderDetailsItem.getArtistService().getArtistId()));
+            intent.putExtra("Total", orderDetailsItem.getArtistService().getPrice());
+            Log.e("Total", "Total" + orderDetailsItem.getArtistService().getPrice());
+            context.startActivity(intent);
+        });
     }
 
 
@@ -51,7 +68,7 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.View
         return dataItemList == null ? 0 : dataItemList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_item_artist_artist_desc)
         TextView txtArtistDesc;
         @BindView(R.id.tv_item_order_id)
@@ -62,6 +79,8 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.View
         TextView txtCost;
         @BindView(R.id.imgProduct)
         ImageView imgProduct;
+        @BindView(R.id.imgeditbookedservice)
+        ImageView imgEditService;
 
 
         public ViewHolder(@NonNull View itemView) {

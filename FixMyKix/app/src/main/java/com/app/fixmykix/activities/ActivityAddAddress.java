@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -23,7 +24,7 @@ import com.app.fixmykix.R;
 import com.app.fixmykix.adapters.AddressRecyclerAdapter;
 import com.app.fixmykix.api_manager.ApiClient;
 import com.app.fixmykix.api_manager.ApiInterface;
-import com.app.fixmykix.model.DataItem;
+import com.app.fixmykix.model.AddressDataItem;
 import com.app.fixmykix.model.GetAddressListResponse;
 import com.app.fixmykix.storage_manager.LocalStorage;
 import com.app.fixmykix.utils.CommonUtils;
@@ -104,7 +105,7 @@ public class ActivityAddAddress extends Activity {
         });
     }
 
-    public void showDialogAddress(DataItem dataItem) {
+    public void showDialogAddress(AddressDataItem addressDataItem) {
         final Dialog dialog = new Dialog(this, R.style.WideDialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -114,24 +115,48 @@ public class ActivityAddAddress extends Activity {
         EditText edtCity = (EditText) dialog.findViewById(R.id.et_add_city);
         EditText edtState = (EditText) dialog.findViewById(R.id.et_add_state);
         EditText edtZip = (EditText) dialog.findViewById(R.id.et_postalcode);
-        if (dataItem != null) {
-            edtStreet.setText(dataItem.getStreet());
-            edtCity.setText(dataItem.getCity());
-            edtState.setText(dataItem.getState());
-            edtZip.setText(dataItem.getZip());
+        if (addressDataItem != null) {
+            edtStreet.setText(addressDataItem.getStreet());
+            edtCity.setText(addressDataItem.getCity());
+            edtState.setText(addressDataItem.getState());
+            edtZip.setText(addressDataItem.getZip());
 
         }
+
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dataItem != null) {
-                    onEditAddress(dataItem.getId(), edtStreet.getText().toString(), edtCity.getText().toString(),
+                if (addressDataItem != null && validateAddress()) {
+                    onEditAddress(addressDataItem.getId(), edtStreet.getText().toString(), edtCity.getText().toString(),
                             edtState.getText().toString(), edtZip.getText().toString());
                 } else {
-                    onSaveAddress(edtStreet.getText().toString(), edtCity.getText().toString(),
-                            edtState.getText().toString(), edtZip.getText().toString());
+
+                    if (validateAddress()) {
+                        onSaveAddress(edtStreet.getText().toString(), edtCity.getText().toString(),
+                                edtState.getText().toString(), edtZip.getText().toString());
+                    }
                 }
                 dialog.dismiss();
+            }
+
+            private boolean validateAddress() {
+                if (TextUtils.isEmpty(edtStreet.getText().toString())) {
+                    Toast.makeText(ActivityAddAddress.this, "Enter street", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                if (TextUtils.isEmpty(edtCity.getText().toString())) {
+                    Toast.makeText(ActivityAddAddress.this, "Enter city", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                if (TextUtils.isEmpty(edtState.getText().toString())) {
+                    Toast.makeText(ActivityAddAddress.this, "Enter state", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                if (TextUtils.isEmpty(edtZip.getText().toString())) {
+                    Toast.makeText(ActivityAddAddress.this, "Enter zip code", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                return true;
             }
         });
 
@@ -212,8 +237,6 @@ public class ActivityAddAddress extends Activity {
                             e.printStackTrace();
                         }
                 }
-
-
             }
 
             @Override

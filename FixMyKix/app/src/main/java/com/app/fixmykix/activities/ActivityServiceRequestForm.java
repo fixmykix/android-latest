@@ -76,6 +76,8 @@ public class ActivityServiceRequestForm extends Activity {
     String artistId;
     ArrayList<String> getServiceNames = new ArrayList<>();
     String imageBase64;
+    String editOrder;
+    String orderServiceId;
 
     private double getPrice = 0.0;
 
@@ -98,6 +100,11 @@ public class ActivityServiceRequestForm extends Activity {
 
             if (extras.containsKey("SelectedServices"))
                 getServiceNames = extras.getStringArrayList("SelectedServices");
+
+            if (extras.containsKey("EditOrder"))
+                editOrder = extras.getString("EditOrder");
+
+            orderServiceId = LocalStorage.getString(ActivityServiceRequestForm.this, LocalStorage.ORDER_ID, "");
 
             if (extras.containsKey("Total"))
                 getPrice = extras.getDouble("Total");
@@ -249,21 +256,30 @@ public class ActivityServiceRequestForm extends Activity {
 
     @OnClick(R.id.tv_service_request_done)
     void onClickSendRequst() {
-      //  navigatetoAddressActivity();
+        //  navigatetoAddressActivity();
         if (TextUtils.isEmpty(etDesc.getText().toString())) {
             etDesc.setError("Enter Description");
             return;
         }
-        if (TextUtils.isEmpty(imageBase64)) {
+       /* if (TextUtils.isEmpty(imageBase64)) {
             Toast.makeText(this, "Select image", Toast.LENGTH_SHORT).show();
             return;
         }
+*/
+        if (TextUtils.isEmpty(editOrder))
+            bookServiceOrder();
+        else
+            editServiceOrder();
+        //  startActivity(new Intent(this, ActivityAddAddress.class));
+    }
 
+    private void editServiceOrder() {
         KProgressHUD kProgressHUD = CommonUtils.showProgressWithText(ActivityServiceRequestForm.this);
         kProgressHUD.show();
 
         Call<ResponseBody> signup = ApiClient.getClient().create(ApiInterface.class).
-                bookService(LocalStorage.getString(ActivityServiceRequestForm.this, LocalStorage.X_USER_TOKEN, ""),
+                editBookedServiceRequest(LocalStorage.getString(ActivityServiceRequestForm.this, LocalStorage.X_USER_TOKEN, ""),
+                        "v1/service_requests/" + orderServiceId,
                         etDesc.getText().toString(), "", artistId, serviceIds,
                         imageBase64);
         signup.enqueue(new Callback<ResponseBody>() {
@@ -293,7 +309,56 @@ public class ActivityServiceRequestForm extends Activity {
                         break;
                     default:
                         try {
-                            Toast.makeText(ActivityServiceRequestForm.this, new JSONObject(response.errorBody().string()).getString("error"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivityServiceRequestForm.this, new JSONObject(response.errorBody().string()).getString("message"), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException | IOException e) {
+                            e.printStackTrace();
+                        }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                kProgressHUD.dismiss();
+                Toast.makeText(ActivityServiceRequestForm.this, t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void bookServiceOrder() {
+        KProgressHUD kProgressHUD = CommonUtils.showProgressWithText(ActivityServiceRequestForm.this);
+        kProgressHUD.show();
+
+        Call<ResponseBody> signup = ApiClient.getClient().create(ApiInterface.class).
+                bookService(LocalStorage.getString(ActivityServiceRequestForm.this, LocalStorage.X_USER_TOKEN, ""),
+                        artistId, etDesc.getText().toString(), "", orderServiceId);
+        signup.enqueue(new Callback<ResponseBody>() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                kProgressHUD.dismiss();
+                switch (response.code()) {
+                    case Constants.SUCCESS_CODE:
+                    case Constants.SUCCESS_CODE_SECOND:
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.body().string());
+                            if (jsonObject.getBoolean("status")) {
+                                Toast.makeText(ActivityServiceRequestForm.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                setResult(RESULT_OK);
+                                finish();
+                                startActivity(new Intent(ActivityServiceRequestForm.this, ActivityAddAddress.class));
+                            }
+                        } catch (JSONException | IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        break;
+                    case Constants.ERROR_CODE_INVALID:
+                        finishAffinity();
+                        startActivity(new Intent(ActivityServiceRequestForm.this, LoginActivity.class));
+                        break;
+                    default:
+                        try {
+                            Toast.makeText(ActivityServiceRequestForm.this, new JSONObject(response.errorBody().string()).getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException | IOException e) {
                             e.printStackTrace();
                         }

@@ -7,11 +7,12 @@
     <RelativeLayout
         android:id="@+id/relativetop"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin_normal"
         android:layout_height="wrap_content">
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:src="@drawable/img_red_shoes" />
 
         <TextView
@@ -69,6 +70,13 @@
         android:gravity="center"
         android:text="@string/highlighted_services"
         android:textAllCaps="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_services"
+        android:layout_width="match_parent"
+        android:layout_below="@id/tv_hightlight_service"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_height="wrap_content" />
 
     <View
         android:id="@+id/viewtop"

@@ -14,6 +14,7 @@ import com.app.fixmykix.R;
 import com.app.fixmykix.api_manager.ApiClient;
 import com.app.fixmykix.api_manager.ApiInterface;
 import com.app.fixmykix.model.ServiceRequest;
+import com.app.fixmykix.model.ServiceRequestsItem;
 import com.app.fixmykix.storage_manager.LocalStorage;
 import com.app.fixmykix.ui.home.ActivityArtistRequestList;
 import com.app.fixmykix.utils.CommonUtils;
@@ -42,7 +43,7 @@ public class ActivityAddDetailToAcceptRequest extends Activity {
     @BindView(R.id.et_request_desc)
     EditText etDesc;
 
-    ServiceRequest serviceRequest;
+    ServiceRequestsItem serviceRequest;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -127,6 +128,7 @@ public class ActivityAddDetailToAcceptRequest extends Activity {
             etTat.setError("Enter Turn around time");
             return;
         }
-        acceptRequest();
+        if (!TextUtils.isEmpty(String.valueOf(serviceRequest.getOrderId())))
+            acceptRequest();
     }
 }

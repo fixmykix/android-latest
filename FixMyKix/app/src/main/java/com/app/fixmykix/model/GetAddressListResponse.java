@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 public class GetAddressListResponse {
 
     @SerializedName("data")
-    private List<DataItem> data;
+    private List<AddressDataItem> data;
 
     @SerializedName("message")
     private String message;
@@ -15,7 +15,7 @@ public class GetAddressListResponse {
     @SerializedName("status")
     private boolean status;
 
-    public List<DataItem> getData() {
+    public List<AddressDataItem> getData() {
         return data;
     }
 

@@ -78,8 +78,17 @@
     <string name="addtocart">Add to Cart</string>
     <string name="gotocart">GO TO CART</string>
     <string name="cartitems">Cart Items</string>
+    <string name="zipcode">Zip code</string>
+    <string name="order_request">Request your order and wait for artist response.We will notify you</string>
+    <string name="payment_success">Congratulations!! Your payment is successful</string>
+    <string name="request_order">Request Orders</string>
+    <string name="payment_successful_heading">Payment Success</string>
+    <string name="delivery_options">Delivery Options</string>
+    <string name="delivery_instructions">Delivery Instructions</string>
+    <string name="delivery_status">Delivery Status</string>
+    <string name="artist_service_detail">Service details</string>
     <string-array name="order_instructions">
-        <item>1.Print ticket from email\n</item>
+        <item> 1.Print ticket from email\n</item>
         <item>2.Package Item\n</item>
         <item>3.Attach Label\n</item>
         <item>4.Drop Package at Ups\n</item>

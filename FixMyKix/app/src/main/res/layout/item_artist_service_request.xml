@@ -164,4 +164,13 @@
         android:layout_gravity="center_vertical"
         android:src="@drawable/ic_keyboard_arrow_right"
         android:tint="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/iv_item_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:src="@drawable/ic_baseline_chat_24"
+         />
 </LinearLayout>
